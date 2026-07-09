@@ -8,8 +8,7 @@ function App() {
   const [itemToEdit, setItemToEdit] = useState(null);
 
   useEffect(() => {
-    const storedItems =
-JSON.parse(localStorage.getItem('items')) || [];
+    const storedItems = JSON.parse(localStorage.getItem('items')) || [];
     setItems(storedItems);
   }, []);
 
@@ -19,8 +18,7 @@ JSON.parse(localStorage.getItem('items')) || [];
 
   const addOrUpdateItem = (value) => {
     if (itemToEdit) {
-      setItems(items.map(item => item.id ===
-itemToEdit.id ? { ...item, value } : item));
+      setItems(items.map(item => item.id === itemToEdit.id ? { ...item, value } : item));
       setItemToEdit(null);
     } else {
       setItems([...items, { id: Date.now(), value }]);
@@ -38,11 +36,8 @@ itemToEdit.id ? { ...item, value } : item));
   return (
     <div className="App">
       <h1>CRUD con LocalStorage</h1>
-      <Form
-addOrUpdateItem={addOrUpdateItem}
-itemToEdit={itemToEdit} />
-      <List items={items}
-deleteItem={deleteItem} editItem={editItem} />
+      <Form addOrUpdateItem={addOrUpdateItem} itemToEdit={itemToEdit} />
+      <List items={items} deleteItem={deleteItem} editItem={editItem} />
     </div>
   );
 }
