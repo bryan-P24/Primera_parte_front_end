@@ -26,7 +26,10 @@ function App() {
   };
 
   const deleteItem = (id) => {
-    setItems(items.filter(item => item.id !== id));
+    const confirmar = window.confirm("¿Estás seguro de que deseas eliminar este elemento?");
+    if (confirmar) {
+      setItems(items.filter(item => item.id !== id));
+    }
   };
 
   const editItem = (item) => {
@@ -37,6 +40,7 @@ function App() {
     <div className="App">
       <h1>CRUD con LocalStorage</h1>
       <Form addOrUpdateItem={addOrUpdateItem} itemToEdit={itemToEdit} />
+      <p className="counter">Total: {items.length}</p>
       <List items={items} deleteItem={deleteItem} editItem={editItem} />
     </div>
   );
