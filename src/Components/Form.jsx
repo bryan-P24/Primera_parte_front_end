@@ -14,7 +14,6 @@ function Form({ addOrUpdateItem, itemToEdit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    /* Validación de espacios vacíos */
     if (!inputValue.trim()) {
       alert("El campo no puede estar vacío ni contener solo espacios.");
       return;
@@ -30,6 +29,7 @@ function Form({ addOrUpdateItem, itemToEdit }) {
         type="text"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
+        placeholder="Escribe algo..."
       />
       <button type="submit" className="btn-submit">
         {itemToEdit ? 'Actualizar' : 'Agregar'}
